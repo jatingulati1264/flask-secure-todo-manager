@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # set a secret key
-
+app.secret_key = "jatin"   # ANY STRING
 
 db = SQLAlchemy(app)
 
@@ -99,7 +99,7 @@ def login():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
-        user = User.query.filter_by().first()
+        user = User.query.filter_by(email=email).first()
         if email == user.email and password == user.password:
             session['email'] = email
             flash("Login Successful!", "success")
@@ -157,6 +157,9 @@ def logout():
 
 
 if __name__ == "__main__":
+    # This block creates the empty todo.db and tables if they don't exist
+    with app.app_context():
+        db.create_all()
     app.run(host='0.0.0.0', port=5000)
 
 
