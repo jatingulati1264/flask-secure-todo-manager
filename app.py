@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # set a secret key
-app.secret_key = "jatin"   # ANY STRING
+
 
 db = SQLAlchemy(app)
 
