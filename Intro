@@ -1,0 +1,80 @@
+# https://youtu.be/oA8brF3w5XQ?si=OlMcSPORHcqULNRm
+
+# Flask Framework: 1. Flask is a lightweight WSGI(Web Server Gateway Interface) web application micro-framework
+# 2. It is useful for creating the web applications in python.
+
+# Here we will learn about flask framework and will create an application and deploy it on the heroku
+
+
+# pip install virtualenv
+# virtualenv env
+
+# We are creating a virtual environment ( a copy of the original python), which
+# means that we are isolated the environment so that it does not affect the base
+# environment
+
+
+# Once your environment is successfully created, you need to activate it.
+# type command:   .\env\Scripts\activate.ps1  (ps1 means under powershell)
+
+# sometimes the scripts under env will not execute in that case just
+# run this command :  Set ExecutionPolicy unrestricted
+
+
+
+
+** Flask Framework Installation **
+
+# Now, finally install flask framework:
+# pip install flask.
+
+# The app.py , static and templates must be outside of the env but needs to be in same folder
+# where isolated new env is there.
+
+
+
+
+** BOOTSTRAP **
+# We will make use of BOOTSTRAP to make the templates as more beautiful and relevant
+# getbootstrap.com starter Page
+
+# Bootstrap has container and container fluid classes which helps you to align the items
+# inside of a container  also bootstrap has a class my-3 which means you can give margin
+# from top to down(y-axis) with a size
+
+
+
+** Flask SQLALCHEMY **
+# For creating the databases with flask we will actually use the flask sqlalchemy
+# just install it using command pip install flask-sqlalchemy
+
+# SQLALCHEMY is a orm mapper which allows you to make changes with databases
+and facilitates the work through python.
+
+
+# Jinja2 template
+pip install Jinja2
+
+
+# TEMPLATE INHERITANCE:
+# This concept is used if you want to have like in navbar on some page you have about and you want
+# to change in 10 templates as about us you can do it manually but that is time consuming
+# so you can use template inheritance and define navbar at one template and then you can change in other
+# templates.
+
+
+
+# Gunicorn
+# To serve our application in multiple threads for that we use the gunicorn.
+
+Gunicorn (Green Unicorn) is a widely used Python WSGI HTTP server essential for deploying Flask applications
+in production environments. Flask's built-in server is only suitable for development and testing, not for
+production-level traffic.
+
+To use Gunicorn with a Flask application using a Procfile, you typically define a command in your
+Procfile that tells Gunicorn how to run your app.
+
+# pip install gunicorn
+# pip freeze > requirements.txt
+# here the requirements.txt file will automatically created and will contain all the things
+# that are required to run our application

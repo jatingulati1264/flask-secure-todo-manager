@@ -1,0 +1,99 @@
+<!-- ** The base template will only contain the things that are common in all templates.
+         Majorly we have header, footer things are common in all templates ** -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <script src="{{ url_for('static', filename='js/test.js')}} "></script>
+    <title>{% block title %} {% endblock %} - TODO APP</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="/">My TODO</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if session.get('email') %}
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+                      </li>
+                     {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">About Us</a>
+                  </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/users/login">Login <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/users/create">Sign Up</a>
+                      </li>
+                    </ul>
+                </div>
+               {% endif %}
+
+            </form>
+          </div>
+      </nav>
+      {% with messages = get_flashed_messages(category_filter=["warning"]) %}
+            {% if messages %}
+               {% for message in messages %}
+                   <div class="alert alert-warning" role="alert">
+                       {{message}}
+                       <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+               {% endfor %}
+            {% endif  %}
+          {% endwith %}
+
+
+          {% with messages = get_flashed_messages(category_filter=["danger"]) %}
+            {% if messages %}
+               {% for message in messages %}
+                   <div class="alert alert-danger" role="alert">
+                       {{message}}
+                       <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+               {% endfor %}
+            {% endif  %}
+          {% endwith %}
+
+
+          {% with messages = get_flashed_messages(category_filter=["success"]) %}
+            {% if messages %}
+               {% for message in messages %}
+                   <div class="alert alert-success" role="alert">
+                       {{message}}
+                       <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+               {% endfor %}
+            {% endif  %}
+          {% endwith %}
+
+  <!-- Creating a jinja block named body -->
+  {% block body  %}
+
+  {% endblock body %}
+  </body>
+</html>
