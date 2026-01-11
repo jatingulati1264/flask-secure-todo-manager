@@ -100,7 +100,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         user = User.query.filter_by(email=email).first()
-        if email == user.email and password == user.password:
+        if user and email == user.email and password == user.password:
             session['email'] = email
             flash("Login Successful!", "success")
             return redirect('/index')
@@ -116,7 +116,7 @@ def login():
         else:
             flash("The email and password you entered did not match our records. Please double-check and "
                   "try again", "danger")
-            redirect('/users/login')
+            return redirect('/users/login')
 
     return render_template('/login.html')
 
